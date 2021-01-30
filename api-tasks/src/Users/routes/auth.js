@@ -5,12 +5,11 @@ const userCtrl = require('../controllers');
 
 const { check } = require('express-validator');
 
-// created user
+// auth
 router.post('/', [
-    check('name', 'The name is require').not().isEmpty(),
     check('email', 'The email is require').isEmail(),
     check('password', 'The password must have at least 6 characters').isLength({min: 6}),
-],userCtrl.createUser);
+],userCtrl.auth);
 
 
 module.exports = router;

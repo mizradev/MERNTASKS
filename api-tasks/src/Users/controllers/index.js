@@ -91,7 +91,7 @@ exports.auth = async (req, res) => {
         }, (err, token) => {
             if (err) throw err;
 
-            res.json({
+            res.header('token', token).status(200).json({
                 token,
                 error: false,
                 msg: 'login user success'
