@@ -3,7 +3,6 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
-const { use } = require('../routes');
 
 exports.createUser = async (req, res) => {
 
@@ -17,12 +16,15 @@ exports.createUser = async (req, res) => {
     const { email, password } = req.body;
 
     try{
-        let user = new User.findOne({ email });
+        let user = await User.findOne({ email });
 
-        if(user) return res.status(400).json({
+        if (user) return res.status(400).json({
             msg: 'This email is already registered 😢',
             error: true
         })
+        
+
+        user = new User(req.body);
         
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(password, salt);
@@ -42,9 +44,7 @@ exports.createUser = async (req, res) => {
         }, (err, token) => {
             if (err) throw err;
 
-            res.json({
-                token 
-            })
+            res.header('token', token).status(200).json({msg: 'User created successfull! 😎',token, error: false})
         })
         //res.status(200).json({msg:'User created successfull! 😎', error: false});
     }catch(err){
