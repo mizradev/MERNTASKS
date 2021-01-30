@@ -1,0 +1,4 @@
+api-tasks/node_modules
+api-tasks/vars.env
+.env
+*.DS_Store
