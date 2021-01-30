@@ -12,5 +12,11 @@ router.post('/', [
     check('password', 'The password must have at least 6 characters').isLength({min: 6}),
 ],userCtrl.createUser);
 
+// auth
+router.post('/', [
+    check('email', 'The email is require').isEmail(),
+    check('password', 'The password must have at least 6 characters').isLength({min: 6}),
+],userCtrl.auth);
+
 
 module.exports = router;
