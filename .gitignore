@@ -1,4 +1,9 @@
 api-tasks/node_modules
 api-tasks/vars.env
+
+
+client/node_modules
+
+
 .env
 *.DS_Store
