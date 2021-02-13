@@ -3,6 +3,7 @@ import React from 'react';
 // components
 import Sidebar from '../layout/Sidebar';
 import Navbar from '../layout/Navbar';
+import FormTask from '../tasks/FormTask';
 
 const Projects = () => {
     return ( 
@@ -11,6 +12,7 @@ const Projects = () => {
         <div className="seccion-principal">
             <Navbar />
             <main>
+                <FormTask />
                 <div className="contenedor-tareas">
 
                 </div>
