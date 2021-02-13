@@ -2,12 +2,14 @@ import React from 'react';
 
 // components
 import Sidebar from '../layout/Sidebar';
+import Navbar from '../layout/Navbar';
 
 const Projects = () => {
     return ( 
     <div className="contenedor-app">
         <Sidebar />
         <div className="seccion-principal">
+            <Navbar />
             <main>
                 <div className="contenedor-tareas">
 
